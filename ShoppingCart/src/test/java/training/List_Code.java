@@ -1,31 +1,21 @@
 package training;
 
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 public class List_Code {
 
 	public static void main(String[] args) {
 
-		List<String> list = new LinkedList<>();
+		String[] courses = { "Selenium", "Java", "Selenium", "TestNG", "Cucumber" };
 
-		list.add("Selenium");
+		Set<String> st = new HashSet<String>();
 
-		list.add("Java");
+		for (String course : courses) {
+			st.add(course);
+		}
 
-		list.add("Selenium");
-
-		list.add("TestNg");
-
-		System.out.println("Before Result: " + list);
-
-		Set<String> st = new LinkedHashSet<>();
-
-		st.addAll(list);
-
-		System.out.println("After Result: " + st);
+		System.out.println("Removed Duplicate: " + st);
 
 	}
 }
