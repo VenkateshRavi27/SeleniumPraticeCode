@@ -27,23 +27,19 @@ public class FindAll extends DriverInstance {
 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		//// span[contains(text(), 'Apple iPhone')]
-
 		WebElement searchProudct = driver.findElementByXPath("//input[@placeholder='Search Amazon.in']");
-		
-		wait.until(ExpectedConditions.visibilityOf(searchProudct)).sendKeys("iphone" , Keys.ENTER);
-		
+
+		wait.until(ExpectedConditions.visibilityOf(searchProudct)).sendKeys("iphone", Keys.ENTER);
+
 		List<WebElement> iphoneName = driver.findElementsByTagName("h2");
-		
+
 		for (WebElement result : iphoneName) {
-			
+
 			System.out.println(result.getText());
-			
+
 		}
-		
+
 		driver.quit();
-		
-		
 
 	}
 
