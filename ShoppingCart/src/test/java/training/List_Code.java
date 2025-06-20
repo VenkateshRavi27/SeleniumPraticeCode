@@ -12,7 +12,7 @@ public class List_Code {
 		Set<String> st = new HashSet<String>();
 
 		for (String course : courses) {
-			st.add(course); //Remove Duplicates
+			st.add(course); // Remove Duplicates
 		}
 
 		System.out.println("Removed Duplicate: " + st);
