@@ -39,10 +39,10 @@ public class AddToCart extends DriverInstance {
 	}
 
 	@And("User search the men {string}")
-	public void userSearchTheMen(String string) throws InterruptedException {
+	public void userSearchTheMen(String prod) throws InterruptedException {
 
 		WebElement product = driver.findElementByName("q");
-		product.sendKeys("Ajax Full-Zip Sweatshirt");
+		product.sendKeys(prod);
 		wait.until(ExpectedConditions.visibilityOf(product));
 
 	}
@@ -50,12 +50,14 @@ public class AddToCart extends DriverInstance {
 	@And("User add the hoodie to the cart")
 	public void userAddTheHoodieToTheCart() throws InterruptedException {
 
-//		WebElement product = driver.findElementById("qs-option-0");
-
-//		action.moveToElement(product).perform();
-
-		WebElement hoodie = driver.findElementByXPath("(//div[@index='1'])[1]");
-		wait.until(ExpectedConditions.visibilityOf(hoodie)).click();
+		WebElement searchProduct = driver.findElementById("qs-option-0");
+		wait.until(ExpectedConditions.visibilityOf(searchProduct)).click();
+		
+		driver.findElementByXPath("(//img[@class='product-image-photo'])[1]").click();
+		
+		WebElement hoodie = driver.findElementByXPath("(//div[@option-label='S'])[1]");
+		wait.until(ExpectedConditions.elementToBeClickable(hoodie)).click();
+		
 		driver.findElementByXPath("(//div[@aria-label='Blue'])[1]").click();
 		WebElement cart = driver.findElementByXPath("(//button[@title='Add to Cart']//span)[1]");
 		wait.until(ExpectedConditions.visibilityOf(cart)).click();
@@ -140,7 +142,7 @@ public class AddToCart extends DriverInstance {
 	@Then("verify the thank you message")
 	public void verifyTheThankYouMessage() {
 
-		String sucessMsg = driver.findElementByTagName("h1").getText();
+		String sucessMsg = driver.findElementByXPath("//span[text()='Thank you for your purchase!']").getText();
 
 		Assert.assertEquals(sucessMsg, "Thank you for your purchase!");
 

@@ -82,11 +82,11 @@ public class Hooks extends DriverInstance {
 
 	}
 
-//	@After(order = 3)
-//	public void afterScenario() {
-//
-//		driver.quit();
-//
-//	}
+	@After(order = 3)
+	public void afterScenario() {
+
+		driver.quit();
+
+	}
 
 }

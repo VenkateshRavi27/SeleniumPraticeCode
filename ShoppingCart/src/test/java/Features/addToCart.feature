@@ -16,5 +16,6 @@ Feature: Shopping Application Demo
     Then verify the thank you message
 
     Examples: 
-      | email                | password  | hoodie                   |
-      | viratanu96@gmail.com | Test@7890 | Ajax Full-Zip Sweatshirt |
+      | email                | password  | hoodie                      |
+      | viratanu96@gmail.com | Test@7890 | Jupiter All-Weather Trainer |
+      | viratanu96@gmail.com | Test@7890 | Ajax Full-Zip Sweatshirt    |
