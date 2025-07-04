@@ -2,13 +2,18 @@ Feature: Shopping Application Demo
 
   Background: Given User should navigate to the application
 
-  @CleanUp
+  #@CleanUp
   Scenario Outline: Add a product to the cart
     And User clicks on the create an login link
     And User enters the "<email>" and "<password>"
     And User search the men "<hoodie>"
     When User add the hoodie to the cart
-    Then Cart badge should be updated
+    And Cart badge should be updated
+    And User clicks the badge button
+    And User clicks the checkout button
+    And User clicks next button for address selection
+    And User clicks the place and order button
+    Then verify the thank you message
 
     Examples: 
       | email                | password  | hoodie                   |

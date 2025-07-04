@@ -1,8 +1,13 @@
 package StepDefinition;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,6 +15,8 @@ import cucumber.api.java.en.When;
 import driver.DriverInstance;
 
 public class AddToCart extends DriverInstance {
+
+	Actions action = new Actions(driver);
 
 	@Given("User clicks on the create an login link")
 	public void userClicksOnTheCreateAnLoginLink() {
@@ -40,18 +47,22 @@ public class AddToCart extends DriverInstance {
 
 	}
 
-	@When("User add the hoodie to the cart")
+	@And("User add the hoodie to the cart")
 	public void userAddTheHoodieToTheCart() throws InterruptedException {
 
-		driver.findElementById("qs-option-0").click();
-		driver.findElementByXPath("(//div[@index='2'])[1]").click();
+//		WebElement product = driver.findElementById("qs-option-0");
+
+//		action.moveToElement(product).perform();
+
+		WebElement hoodie = driver.findElementByXPath("(//div[@index='1'])[1]");
+		wait.until(ExpectedConditions.visibilityOf(hoodie)).click();
 		driver.findElementByXPath("(//div[@aria-label='Blue'])[1]").click();
-		WebElement cart = driver.findElementByXPath("(//button[@title=\"Add to Cart\"])[1]");
+		WebElement cart = driver.findElementByXPath("(//button[@title='Add to Cart']//span)[1]");
 		wait.until(ExpectedConditions.visibilityOf(cart)).click();
 
 	}
 
-	@Then("Cart badge should be updated")
+	@And("Cart badge should be updated")
 	public void cartBadgeShouldBeUpdated() {
 
 		WebElement badgeCount = driver.findElementByClassName("counter-number");
@@ -59,6 +70,79 @@ public class AddToCart extends DriverInstance {
 		String badgeResult = badgeCount.getText();
 		Integer.parseInt(badgeResult);
 		Assert.assertEquals(Integer.parseInt(badgeResult) > 0, true);
+
+	}
+
+	@And("User clicks the badge button")
+	public void userClicksTheBadgeButton() {
+
+		driver.findElementByXPath("//a[@class='action showcart']").click();
+
+	}
+
+	@And("User clicks the checkout button")
+	public void userClicksTheCheckoutButton() {
+
+		WebElement dialogBox = driver.findElementByXPath("//div[@role='dialog']");
+		wait.until(ExpectedConditions.visibilityOf(dialogBox));
+		if (dialogBox.isDisplayed()) {
+
+			driver.findElementById("top-cart-btn-checkout").click();
+
+		}
+
+	}
+
+	@And("User clicks next button for address selection")
+	public void userClicksNextButtonForAddressSelection() {
+
+		driver.findElementByName("ko_unique_1").click();
+
+		WebElement nextBtn = driver.findElementByXPath("(//button[@type='submit'])[2]");
+
+		wait.until(ExpectedConditions.visibilityOf(nextBtn));
+
+		if (nextBtn.isDisplayed()) {
+
+			nextBtn.click();
+
+		}
+
+	}
+
+	@When("User clicks the place and order button")
+	public void userClicksThePlaceAndOrderButton() {
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		// 1. Wait for any blocking overlays to disappear (customize selector if needed)
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".checkout-billing-address")));
+		} catch (TimeoutException e) {
+			System.out.println("Blocking element '.checkout-billing-address' still visible after timeout.");
+		}
+
+		// 2. Locate the button
+		By placeOrderBy = By.xpath("//button[@title='Place Order']");
+		WebElement placeOrderBtn = wait.until(ExpectedConditions.presenceOfElementLocated(placeOrderBy));
+
+		// 3. Scroll into view
+		js.executeScript("arguments[0].scrollIntoView({block: 'center'});", placeOrderBtn);
+
+		// 4. Wait again until it's clickable
+		wait.until(ExpectedConditions.elementToBeClickable(placeOrderBy));
+
+		// 5. Click using JavaScript to avoid native click interception
+		js.executeScript("arguments[0].click();", placeOrderBtn);
+
+	}
+
+	@Then("verify the thank you message")
+	public void verifyTheThankYouMessage() {
+
+		String sucessMsg = driver.findElementByTagName("h1").getText();
+
+		Assert.assertEquals(sucessMsg, "Thank you for your purchase!");
 
 	}
 

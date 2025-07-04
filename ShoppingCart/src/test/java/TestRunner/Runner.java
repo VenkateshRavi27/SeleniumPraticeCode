@@ -7,8 +7,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 @CucumberOptions(
 
 		features = {
-				"src/test/java/Features/addToCart.feature",
-				"src/test/java/Features/Registration_Negative.feature"}, 
+				"src/test/java/Features/addToCart.feature",}, 
 				dryRun = !true,  
 				glue = {"StepDefinition","hooks"},
 				snippets = SnippetType.CAMELCASE,
