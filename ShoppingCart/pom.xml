@@ -1,9 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ShoppingCart</groupId>
-  <artifactId>ShoppingCart</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ShoppingCart</groupId>
+	<artifactId>ShoppingCart</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -19,7 +21,7 @@
 			<artifactId>cucumber-testng</artifactId>
 			<version>4.2.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports-cucumber4-adapter</artifactId>
@@ -30,12 +32,13 @@
 			<artifactId>extentreports</artifactId>
 			<version>5.0.1</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
-		 <dependency>
+
+		<!--
+		https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>4.2.2</version>
-		</dependency> 
+		</dependency>
 	</dependencies>
 </project>

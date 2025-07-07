@@ -1,5 +1,6 @@
 package hooks;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,6 +8,7 @@ import java.util.regex.Pattern;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,9 +24,13 @@ public class Hooks extends DriverInstance {
 	@Before
 	public void beforeScenario(Scenario scr) {
 
+		option = new ChromeOptions();
+
+//		option.addExtensions(new File("./Extensions/AdBlock.crx"));
+		
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(option);
 
 		driver.get("https://magento.softwaretestingboard.com/");
 

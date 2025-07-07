@@ -52,15 +52,76 @@ public class AddToCart extends DriverInstance {
 
 		WebElement searchProduct = driver.findElementById("qs-option-0");
 		wait.until(ExpectedConditions.visibilityOf(searchProduct)).click();
-		
+
 		driver.findElementByXPath("(//img[@class='product-image-photo'])[1]").click();
 		
-		WebElement hoodie = driver.findElementByXPath("(//div[@option-label='S'])[1]");
-		wait.until(ExpectedConditions.elementToBeClickable(hoodie)).click();
-		
-		driver.findElementByXPath("(//div[@aria-label='Blue'])[1]").click();
+		Thread.sleep(10000);
+
+	}
+
+	@And("user selects size {string}")
+	public void userClicksTheOption(String size) {
+
+		WebElement sizeElement = null;
+
+		switch (size) {
+		case "xs":
+			sizeElement = driver.findElement(By.xpath("(//div[@option-label='XS'])[1]"));
+			break;
+		case "s":
+			sizeElement = driver.findElement(By.xpath("(//div[@option-label='S'])[1]"));
+			break;
+		case "m":
+			sizeElement = driver.findElement(By.xpath("(//div[@option-label='M'])[1]"));
+			break;
+		case "l":
+			sizeElement = driver.findElement(By.xpath("(//div[@option-label='L'])[1]"));
+			break;
+		case "xl":
+			sizeElement = driver.findElement(By.xpath("(//div[@option-label='XL'])[1]"));
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid size option: " + size);
+		}
+
+		wait.until(ExpectedConditions.visibilityOf(sizeElement)).click();
+
+	}
+
+	@And("user selects color {string}")
+	public void userClicksDressOption(String colour) {
+
+		WebElement colorElement = null;
+
+		switch (colour.toLowerCase()) {
+		case "purple":
+			colorElement = driver.findElement(By.xpath("(//div[@aria-label='Purple'])"));
+			break;
+		case "green":
+			colorElement = driver.findElement(By.xpath("(//div[@aria-label='Green'])[1]"));
+			break;
+		case "orange":
+			colorElement = driver.findElement(By.xpath("(//div[@aria-label='Orange'])[1]"));
+			break;
+		case "red":
+			colorElement = driver.findElement(By.xpath("(//div[@aria-label='Red'])[1]"));
+			break;
+		case "yellow":
+			colorElement = driver.findElement(By.xpath("(//div[@aria-label='Yellow'])[1]"));
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid color option: " + colour);
+		}
+
+		wait.until(ExpectedConditions.visibilityOf(colorElement)).click();
+	}
+
+	@And("user clicks the add to cart button")
+	public void userClicksTheAddToCartButton() throws InterruptedException {
+
 		WebElement cart = driver.findElementByXPath("(//button[@title='Add to Cart']//span)[1]");
 		wait.until(ExpectedConditions.visibilityOf(cart)).click();
+		Thread.sleep(10000);
 
 	}
 
