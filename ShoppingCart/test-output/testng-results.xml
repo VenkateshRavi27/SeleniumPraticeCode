@@ -2,39 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-07T07:09:44Z" name="Default suite" finished-at="2025-07-07T07:10:40Z" duration-ms="56615">
+  <suite started-at="2025-07-09T07:21:32Z" name="Default suite" finished-at="2025-07-09T07:21:43Z" duration-ms="10570">
     <groups>
-      <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:TestRunner.Runner@5a2d131d]" name="runScenario" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
-      </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-07-07T07:09:44Z" name="Default test" finished-at="2025-07-07T07:10:40Z" duration-ms="56615">
-      <class name="TestRunner.Runner">
-        <test-method is-config="true" signature="setUpClass()[pri:0, instance:TestRunner.Runner@5a2d131d]" started-at="2025-07-07T07:09:44Z" name="setUpClass" finished-at="2025-07-07T07:09:44Z" duration-ms="432" status="PASS">
+    <test started-at="2025-07-09T07:21:32Z" name="Default test" finished-at="2025-07-09T07:21:43Z" duration-ms="10570">
+      <class name="training.Calender">
+        <test-method signature="CalanderHandle()[pri:0, instance:training.Calender@3e6104fc]" started-at="2025-07-09T07:21:32Z" name="CalanderHandle" finished-at="2025-07-09T07:21:43Z" duration-ms="10545" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:TestRunner.Runner@5a2d131d]" started-at="2025-07-07T07:09:44Z" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-07-07T07:10:40Z" duration-ms="55874" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Add a product to the cart"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Shopping Application Demo"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:TestRunner.Runner@5a2d131d]" started-at="2025-07-07T07:10:40Z" name="tearDownClass" finished-at="2025-07-07T07:10:40Z" duration-ms="283" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownClass -->
-      </class> <!-- TestRunner.Runner -->
+        </test-method> <!-- CalanderHandle -->
+      </class> <!-- training.Calender -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
